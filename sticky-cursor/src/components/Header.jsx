@@ -1,39 +1,24 @@
-// import { MenuIcon } from "lucide-react";
-// import { forwardRef } from "react";
-
-// const Header = forwardRef((props, ref) => {
-//     return (
-//         <div className="flex mix-blend-difference  justify-end  p-16 ">
-
-//             <MenuIcon size={36} ref={ref} />
-
-//         </div>
-//     );
-// });
-
-// export default Header;
-
 import { MenuIcon } from "lucide-react";
-import { forwardRef, useState } from "react";
+import { forwardRef } from "react";
 
-const Header = forwardRef((props, ref) => {
-    const [isHovered, setIsHovered] = useState(false);
+export const Header = forwardRef((props, ref) => {
+    const { isHovered } = props;
 
     return (
-        <div className="flex mix-blend-difference justify-end p-16">
-            <div
-                ref={ref}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-                className="p-2 rounded"
-            >
-                <MenuIcon
-                    size={36}
-                    stroke={isHovered ? "#ffffff" : "#000000"} // white on hover
-                />
+        <div className="flex justify-end z-50 transition-all ">
+            <div className="relative z-30">
+                <div ref={ref} className="border-2 border-neutral-200 p-8" >
+                    < MenuIcon
+                        size={36}
+                        className={isHovered ? "text-white" : ""}
+                    // ref={ref}
+                    />
+                </div>
+
             </div>
         </div>
     );
 });
 
-export default Header;
+
+
